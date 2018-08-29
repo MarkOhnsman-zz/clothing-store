@@ -24,7 +24,7 @@
         },
         methods: {
             buy() {
-                this.$emit('buy', this.itemProp)
+                this.$emit('buy', this.itemProp._id)
             }
         }
     }

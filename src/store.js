@@ -1,7 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
 
 Vue.use(Vuex)
+
+let api = Axios.create({
+  baseURL: '//localhost:3000/api/clothes',
+  timeout: 3000
+})
 
 export default new Vuex.Store({
   state: {
@@ -20,10 +26,27 @@ export default new Vuex.Store({
       name: 'Darryl\'s Thermos',
       img: 'https://i.pinimg.com/originals/43/e1/18/43e118ce3527dfdbb30c74dfca033020.jpg',
       stock: 1
-    }]
+    }],
+    clothes: []
   },
   mutations: {
+    addItem(state, item) {
+      state.items.push(item)
+    },
+    buy(state, itemId) {
+      let item = state.items.find(i => i._id == itemId)
+      item.stock--
+    },
+    setClothes(state, clothes) {
+      state.clothes = clothes
+    }
   },
   actions: {
+    addItem({ dispatch, commit }, item) {
+      commit('addItem', item)
+    },
+    buy({ dispatch, commit }, itemId) {
+      commit('buy', itemId)
+    }
   }
 })
