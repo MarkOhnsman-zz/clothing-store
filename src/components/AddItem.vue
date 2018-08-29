@@ -2,8 +2,8 @@
     <div class="add-item">
         <form @submit.prevent="createItem">
             <input type="text" placeholder="name" v-model='newItem.name' required>
-            <input type="url" placeholder="image" v-model='newItem.img' required>
-            <input type="number" placeholder="stock" v-model='newItem.stock' required>
+            <input type="text" placeholder="description" v-model='newItem.description' required>
+            <input type="number" placeholder="stock" v-model='newItem.quantity' required>
             <button type="submit">SUBMIT</button>
         </form>
     </div>
@@ -26,4 +26,7 @@
 
 </script>
 <style>
+form button{
+    display: inline
+}
 </style>

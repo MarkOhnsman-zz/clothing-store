@@ -18,17 +18,20 @@
         newItem: {}
       }
     },
+    mounted(){
+      this.$store.dispatch('getClothes')
+    },
     computed:{
       items(){
-        return this.$store.state.items
+        return this.$store.state.clothes
       }
     },
     methods: {
       addItem(item) {
         this.$store.dispatch('addItem', item)
       },
-      buy(itemId) {
-        this.$store.dispatch('buy', itemId)
+      buy(item) {
+        this.$store.dispatch('buy', item)
       }
     },
     components: {
@@ -39,8 +42,11 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
   button {
     display: block
+  }
+  img {
+    width: 400px
   }
 </style>
