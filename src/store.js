@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
+import router from './router'
 
 Vue.use(Vuex)
 
@@ -29,6 +30,7 @@ export default new Vuex.Store({
       api.put(item._id, { quantity: item.quantity -= 1 })
         .then(res => {
           dispatch('getClothes')
+          router.push({ name: 'about', params: { itemName: item.name } })
         })
     },
     getClothes({ commit, dispatch }) {

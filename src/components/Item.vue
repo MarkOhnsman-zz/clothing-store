@@ -2,9 +2,9 @@
     <div class="item">
         <h1>{{itemProp.name}} : {{itemProp.quantity}} </h1>
         <p>{{itemProp.description}}</p>
-        <div v-if="itemProp.quantity > 0">
+        <div v-if="itemProp.quantity > 0" class="item-details" :style="{ backgroundImage: 'url(' + itemProp.img + ')' }">
             <button @click="buy">BUY</button>
-            <img :src="itemProp.img" alt="">
+            <!-- <img :src="itemProp.img" alt=""> -->
             <div v-if="itemProp.quantity < 5">
                 <h4>Low STOCK!</h4>
             </div>
@@ -32,9 +32,14 @@
 
 </script>
 <style scoped>
-    .item{
+    .item {
         align-items: center;
         display: flex;
         flex-direction: column;
+    }
+
+    .item-details {
+        height: 200px;
+        background-size: cover
     }
 </style>
